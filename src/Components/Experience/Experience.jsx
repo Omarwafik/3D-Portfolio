@@ -3,7 +3,10 @@ import {motion} from 'framer-motion'
   import 'react-vertical-timeline-component/style.min.css'
   import { learnExperiences } from '../../info'
 import ExperienceCard from '../ExperienceCard/ExperienceCard'
+import useIsMobile from '../Hooks/userIsMobile'
 const Experience = () => {
+    const isMobile =useIsMobile()
+
   return (
     <>
       <div id="learn" className='scroll-mt-8 flex  flex-col justify-around gap-10 py-13  mb-5'>
@@ -11,7 +14,7 @@ const Experience = () => {
           <motion.div 
             initial={{opacity:0,y:0}}
             whileInView={{opacity:1,y:30}}
-            // viewport={{once:true}}
+            viewport={{once:true}}
             transition={{type:'spring',duration:1 , delay:.3}}
             className='ps-7'
             >

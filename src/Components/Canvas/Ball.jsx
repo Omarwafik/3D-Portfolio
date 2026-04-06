@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -9,18 +9,23 @@ import {
 } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
+import useIsMobile from "../Hooks/userIsMobile";
 
-const Ball = (props) => {
-  const [decal] = useTexture([props.imgUrl]);
+const Ball = ({ imgUrl, isMobile }) => {
+  const [decal] = useTexture([imgUrl]);
 
   return (
-    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
-      <ambientLight intensity={0.25} />
-      <directionalLight position={[0, 0, 0.05]} />
-      <mesh castShadow receiveShadow scale={2.75}>
+    <Float
+      speed={isMobile ? 0.5 : 1.75}
+      rotationIntensity={isMobile ? 0.3 : 1}
+      floatIntensity={isMobile ? 0.7 : 2}
+    >
+      <ambientLight intensity={isMobile ? 0.3 : 0.25} />
+      <directionalLight position={[0, 0, 0.05]} intensity={isMobile ? 0.3 : 0.8} />
+      <mesh castShadow receiveShadow scale={isMobile ? 1.8 : 2.75}>
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial
-          color='#fff8eb'
+          color="#fff8eb"
           polygonOffset
           polygonOffsetFactor={-5}
           flatShading
@@ -38,18 +43,50 @@ const Ball = (props) => {
 };
 
 const BallCanvas = ({ icon }) => {
+  const isMobile = useIsMobile();
+  const [renderable, setRenderable] = useState(true);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    if (isMobile) {
+      timeoutRef.current = setTimeout(() => {
+        setRenderable(false);
+      }, 5000); 
+    }
+
+    return () => {
+      clearTimeout(timeoutRef.current);
+    };
+  }, [isMobile]);
+
+  if (!renderable && isMobile) {
+    return (
+      <p className="text-white text-center mt-5">
+3D Can't Load on your device Refreshing may make a change.      </p>
+    );
+  }
+
   return (
     <Canvas
-      frameloop='always'
-      dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true }}
+      shadows={isMobile?false:true}
+      frameloop="always"
+      dpr={isMobile ? 0.5 : [1, 2]}
+      gl={{
+        preserveDrawingBuffer: false,
+        antialias: !isMobile,
+        powerPreference: isMobile ? "low-power" : "high-performance",
+      }}
+      onCreated={() => {
+        if (isMobile) {
+          clearTimeout(timeoutRef.current);
+        }
+      }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
+        <Ball imgUrl={icon} isMobile={isMobile} />
+        <Preload all />
       </Suspense>
-
-      <Preload all />
     </Canvas>
   );
 };

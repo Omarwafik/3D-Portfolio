@@ -8,8 +8,12 @@ import { motion } from 'framer-motion';
 import Hr from './Hr/Hr';
 import Work from './Work/Work';
 import Contact from './Contact/Contact';
+import useIsMobile from './Hooks/userIsMobile';
+import MobileTech from './MobileTech/MobileTech';
+import Footer from './Footer/Footer';
 
 const Home =()=> {
+  const isMobile = useIsMobile();
   return (
     <>
       <Hero/>
@@ -17,10 +21,13 @@ const Home =()=> {
       <Hr/>
       <Experience/>
       <Hr/>
-      <Tech/>
+      {
+       isMobile?<MobileTech/>: <Tech/>
+      }
       <Work/>
       <Hr/>
       <Contact/>
+      <Footer/>
  
     </>
   )

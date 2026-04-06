@@ -10,7 +10,11 @@ const App=()=> {
         {index:true , element:<Home/>},
       ]
     }
-  ])
+  ],
+{
+    basename: "/3D-Portfolio" 
+  }
+)
   return (
     <>
      <RouterProvider router={routes}/>

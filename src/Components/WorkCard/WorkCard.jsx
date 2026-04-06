@@ -5,7 +5,11 @@ import  style from './WorkCard.module.css';
 import  github from '../../assets/github.png'; 
 import  play from '../../assets/play-button.png'; 
 import { techColors } from '../../info';
+import useIsMobile from '../Hooks/userIsMobile';
 const WorkCard = ({data}) => {
+
+  const isMobile =useIsMobile()
+
   const containerVariants = {
     hidden: {},
     show: {
@@ -20,7 +24,7 @@ const WorkCard = ({data}) => {
     show: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", duration: 1 },
+      transition: { type: "spring", duration: 1.5 },
     },
   };
 
@@ -30,13 +34,15 @@ const WorkCard = ({data}) => {
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      // viewport={{ once: true }}
+        viewport={{once:true}}
       className="flex flex-wrap gap-10 justify-center p-4 sm:px-30 mb-20">
         {
           data.map((item , index)=>
             <Tilt>
               <motion.div
                 variants={cardVariants}
+                        viewport={{once:true}}
+
                 key={index}
                 className={`${style.workBg} p-4 w-full min-h-[200px] max-w-[320px] rounded-2xl justify-center `}
                 >

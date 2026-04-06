@@ -1,71 +1,63 @@
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense} from "react";
 import CanvasLoader from '../Loader';
 import { Canvas } from "@react-three/fiber";
+// import useIsMobile from "../Hooks/userIsMobile";
 
-const Computers =({Mobile})=>{
-  const computer = useGLTF("./desktop_pc/scene.gltf")
-  return <>
+const Computers = () => {
+  const computer = useGLTF("./desktop_pc/scene.gltf");
+  return (
     <mesh>
-      <hemisphereLight intensity={6} groundColor="black"/>
-      <pointLight intensity={1}/>
-       <spotLight
+      <hemisphereLight intensity={ 6} groundColor="black" />
+      <pointLight intensity={ 0.4} />
+      <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
         penumbra={1}
         intensity={1}
         castShadow
         shadow-mapSize={1024}
-        />
-   
+      />
       <primitive
-      object={computer.scene}
-      scale={Mobile?0.45:0.75}
-      position={Mobile?[0,-2.6,-1]:[0,-3,-1.5]}
-      rotation={Mobile?[-0.02,-0.4,-0.05]:[0,-0.4,-0.05]}
+        object={computer.scene}
+        scale={ 0.60}
+        position={[-1, -2.7, -1.5]}
+        rotation={[0, -0.4, -0.05]}
       />
-      
     </mesh>
-  </>
-}
+  );
+};
 
-const ComputersCanvas=()=>{
-  // let[loading , setLoading]=useState(true)
-  // useEffect(()=>{
-  //  const timer = setTimeout(() => {
-  //     setLoading(false)
-  //   }, 2000);
-  //  return ()=>{ clearTimeout(timer)}
-  // })
-    const [Mobile , setMobile]=useState(false);
-    useEffect(()=>{
-      const media = window.matchMedia('(max-width:500px)');
-      setMobile(media.matches)
-      const handleChange=(event)=>{
-        setMobile(event.matches)
-      }
-      media.addEventListener("change" , handleChange)
-    return ()=>{
-      media.removeEventListener("change", handleChange)
-    }
-    },[])
+const ComputersCanvas = () => {
+ 
   return (
-    <Canvas
-    frameloop="demand"
-    shadows
-    camera={{position:[20,3,5],fov:30}}
-    gl={{preserveDrawingBuffer :true}}
-    >
-    <Suspense fallback={<CanvasLoader/>}>
-      <OrbitControls
-        enableZoom={false}
-        maxPolarAngle={Math.PI /2}
-        minPolarAngle={Math.PI /2}
-      />
-      <Computers Mobile={Mobile}/>
-    </Suspense>
-    <Preload all />
-    </Canvas>
-  )
-}
+    <>
+      <Canvas
+      frameloop="demand"
+      shadows
+      camera={{ position: [20, 3, 5], fov:  25 }}
+      dpr={ [0.5, 1.5]}
+      gl={{
+        preserveDrawingBuffer: false,
+        antialias:true,
+        
+      }}
+      >
+        <Suspense fallback={ <CanvasLoader /> }>
+          <OrbitControls
+            enableZoom={false}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
+            />
+          <Computers  />
+        </Suspense>
+        <Preload all />
+      </Canvas>
+
+   
+        </>
+      
+      );
+    };
+
 export default ComputersCanvas;

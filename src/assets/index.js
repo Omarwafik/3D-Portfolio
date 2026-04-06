@@ -6,6 +6,8 @@ import react from "./react.svg";
 import ASU from "./ASU.jpeg";
 import MAM from "./Mam.jpg";
 import Mentality from "./Mentality.jpg";
+import ITI from "./ITI.jpeg";
+import LD from "./Logic-Design.jpeg";
 
 import mobile from "./mobile.png";
 import web from "./web.png";
@@ -25,13 +27,16 @@ import framermotion from "./tech/framermotion.png";
 import sass from "./tech/sass.png";
 import bootstrap from "./tech/bootstrap.png";
 
-import Bonsai from "./Projects/Bonsai.jpg";
 import Crud from "./Projects/Crud.jpg";
+import Clinic from "./Projects/Clinic.jpg";
+import Bonsai from "./Projects/Bonsai.jpg";
 import Elearning from "./Projects/Elearning.jpg";
 import FurniStore from "./Projects/FurniStore.jpg";
 import store from "./Projects/store.jpg";
+import Knowhere from "./Projects/Knowhere.jpeg";
 
 export {
+  Clinic,
   Bonsai,
   Crud,
   Elearning,
@@ -55,8 +60,11 @@ export {
   ASU,
   Mentality,
   MAM,
+  ITI,
+  LD,
   jQuery,
   framermotion,
   sass,
   bootstrap,
+  Knowhere,
 };

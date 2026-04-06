@@ -1,9 +1,11 @@
 import {motion} from 'framer-motion'
 import { EarthCanvas } from '../Canvas'
-import StarsCanvas from '../Stars/Stars'
+import StarsCanvas from '../Canvas/Stars/Stars'
 import {useRef, useState } from 'react'
 import emailjs from "@emailjs/browser";
+import useIsMobile from '../Hooks/userIsMobile';
 const Contact = () => {
+  const isMobile =useIsMobile()
 
   const formRef =useRef();
   const [form , setForm]=useState({
@@ -55,6 +57,8 @@ const Contact = () => {
         <StarsCanvas />
         <motion.div
         initial={{opacity:0,x:-20}}
+                viewport={{once:true}}
+
         whileInView={{opacity:1,x:0}}
         transition={{type:'spring',duration:1.4 , delay:.8}}
         className=' w-full max-w-[600px] mx-auto xl:flex-[0.50] bg-black p-8   rounded'
@@ -105,15 +109,21 @@ const Contact = () => {
               </div>
             </form>
         </motion.div>
+        {
+          isMobile?<EarthCanvas />:
         <motion.div
           initial={{ opacity: 0, x: 20 }} 
+          viewport={{once:true}}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ type: "spring", duration: 1, delay: 1 }}
           className=" xl:flex-[.50] xl:h-auto md:h-[550px] h-[370px]"
           >
             <EarthCanvas />
         </motion.div>
+
+        }
       </div>
+      
       
     </>
   )

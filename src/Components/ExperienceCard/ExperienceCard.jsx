@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+import useIsMobile from "../Hooks/userIsMobile";
 
 const ExperienceCard = ({ data }) => {
+    const isMobile =useIsMobile()
+
   const containerVariants = {
     hidden: {},
     show: {
@@ -24,11 +27,15 @@ const ExperienceCard = ({ data }) => {
   return (
     <motion.div
       variants={containerVariants}
-      
+      viewport={{once:true}}
+
     >
       {data.map((item, index) => (
         <motion.div variants={cardVariants} initial="hidden"
-      whileInView="show" key={index} className="mb-10">
+        whileInView="show" key={index} 
+                viewport={{once:true}}
+
+        className="mb-10">
           <VerticalTimelineElement
           position={index%2===0?"left":"right"}
             contentStyle={{

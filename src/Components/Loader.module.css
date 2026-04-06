@@ -5,6 +5,7 @@
   width: calc(var(--s) + var(--_d));
   aspect-ratio: 1;
   display: grid;
+  
 }
 .loader:before,
 .loader:after {

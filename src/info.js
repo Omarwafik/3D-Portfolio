@@ -1,4 +1,14 @@
-import { web, react, mobile, algo, MAM, ASU, Mentality } from "./assets";
+import {
+  web,
+  react,
+  mobile,
+  algo,
+  MAM,
+  ASU,
+  Mentality,
+  ITI,
+  LD,
+} from "./assets";
 import {
   bootstrap,
   css,
@@ -14,7 +24,8 @@ import {
   typescript,
 } from "./assets";
 
-import { Bonsai, Crud, Elearning, FurniStore, store } from "./assets";
+
+import { Bonsai, Crud, Elearning, FurniStore, store, Clinic , Knowhere} from "./assets";
 
 export const navLinks = [
   {
@@ -52,10 +63,33 @@ const info = [
 
 const learnExperiences = [
   {
+    title: "Logic Design InternShip",
+    icon: LD,
+    iconBg: "#E6DEDD",
+    date: "Jul. 2025 - Sep. 2025",
+    points: [
+      "Worked on real client projects and contributed to the development of many live websites",
+      "Completed multiple frontend tasks using HTML, CSS, JavaScript, and React.js, ensuring responsiveness and user-friendly design.",
+      "Collaborated with the team on real workflows, gaining experience in project delivery and client requirements.",
+    ],
+  },
+  {
+    title: "Information Technology Institute (ITI) InternShip",
+    icon: ITI,
+    iconBg: "#E6DEDD",
+    date: "Jul. 2025 - Aug. 2025",
+    points: [
+      "Completed intensive training in HTML5, CSS3, JavaScript (ES6), React.js and modern web technologies.",
+      "Led a final project as Team Leader, applying technical and leadership skills to deliver a complete web solution",
+      "Deal with Json Server to simulate APIs for the project.",
+      "Applied best practices in state management, UI/UX design, and API integration, ensuring scalability and smooth user experience. ",
+    ],
+  },
+  {
     title: "Mentality",
     icon: Mentality,
     iconBg: "#383E56",
-    date: "Aug 2024 - April 2025",
+    date: "Aug. 2024 - Apr. 2025",
     points: [
       "Completed a comprehensive front-end development program covering HTML5, CSS3, JavaScript, SASS, Bootstrap, Tailwind CSS, jQuery, TypeScript, and React.js.",
       "Learned how CRUD operations work and implemented them using modern frameworks.",
@@ -67,7 +101,7 @@ const learnExperiences = [
     title: "CS Student ASU",
     icon: ASU,
     iconBg: "#E6DEDD",
-    date: "Oct 2022 - June 2026",
+    date: "Oct. 2022 - Jun. 2026",
     points: [
       "Computer Science student at Ain Shams University, specializing in Information Systems.",
       "Worked with various programming languages including C++, Java, and Python.",
@@ -135,7 +169,7 @@ const technologies = [
     icon: threejs,
   },
   {
-    name: "git",
+    name: "github",
     icon: github,
   },
 ];
@@ -154,6 +188,44 @@ const techColors = {
 
 const projects = [
   {
+    name: "Knowhere Web App",
+    description:
+      "Designed and developed a Full Stack Booking System For KNOWHERE Co-Working Space. ",
+    tags: [
+      {
+        name: "#react",
+      },
+      {
+        name: "#Django",
+      },
+      {
+        name: "#API",
+      },
+    ],
+    image: Knowhere,
+    // source_code_link: "https://github.com/Omarwafik/clinic-management-system",
+    live_demo_link: "https://knowhere-eg.com/",
+  },
+  {
+    name: "Clinic Management Project",
+    description:
+      "Led a final project as Team Leader, Built a responsive clinic management dashboard, supporting full CRUD operations (users, doctors, appointments)",
+    tags: [
+      {
+        name: "#react",
+      },
+      {
+        name: "#Bootstrap5",
+      },
+      {
+        name: "#API",
+      },
+    ],
+    image: Clinic,
+    source_code_link: "https://github.com/Omarwafik/clinic-management-system",
+    live_demo_link: "https://omarwafik.github.io/clinic-management-system/",
+  },
+  {
     name: "Bonsai Page",
     description:
       "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
@@ -170,7 +242,7 @@ const projects = [
     ],
     image: Bonsai,
     source_code_link: "https://github.com/Omarwafik/Bonsai_Page",
-    live_demo_link: "https://github.com/Omarwafik/Bonsai_Page",
+    live_demo_link: "https://omarwafik.github.io/Bonsai_Page",
   },
 
   {

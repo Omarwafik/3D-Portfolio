@@ -2,8 +2,11 @@ import React from 'react'
 import style from './Cards.module.css'
 import {delay, motion} from 'framer-motion'
 import  Tilt  from 'react-parallax-tilt';
+import useIsMobile from '../Hooks/userIsMobile';
 
 const Cards = ({data}) => {
+    const isMobile =useIsMobile()
+
   const containerVariants = {
   hidden: {},
   show: {
@@ -24,7 +27,7 @@ const cardVariants = {
       variants={containerVariants}
       initial="hidden"
       whileInView={"show"}
-    //  viewport={{once:true}}
+      viewport={{once:true}}
       className='flex gap-10 justify-center items-center p-5 flex-wrap'
     >
       {
@@ -33,6 +36,8 @@ const cardVariants = {
         >
         <motion.div
           variants={cardVariants}
+                    viewport={{once: isMobile?true:false}}
+
           key={index}
           className={`${style.cardsBg} flex flex-col p-4 min-h-[200px] min-w-[200px] rounded-2xl items-center group`}
           >
