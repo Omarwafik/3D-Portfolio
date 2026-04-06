@@ -1,0 +1,16 @@
+.line-gradient{
+  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(-90deg,#804dee 0%, rgba(60, 51, 80, .3) 100%);
+}
+
+.backHeroMobile{
+  
+  background-image: url(../../assets/herobg.png);
+}
+.backHero{
+  background-color: #0f0f0f;
+  background-image: url(../../assets/outrun-neon-dark-background-purple-3440x1440-4523.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

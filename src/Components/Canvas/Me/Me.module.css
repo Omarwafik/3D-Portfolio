@@ -1,0 +1,24 @@
+.me{
+  animation-name:move ;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  cursor: pointer;
+  transition: all 0.5s 10ms;
+  box-shadow: 0 0 5px 2px rgb(67, 27, 134)
+}
+
+.me:hover{
+  box-shadow: 0 0 8px 8px rgb(57, 14, 132);
+  transition: all 0.5s 10ms;
+}
+@keyframes move {
+  0%{
+    transform: translateZ(0px);
+  }
+  100%{
+    transform: translateY(30px);
+  }
+}
+
